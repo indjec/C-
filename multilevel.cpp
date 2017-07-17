@@ -20,7 +20,7 @@ using namespace std;
 // }
 class test
 {
-  protected:
+  public:
     float s1;
     float s2;
 
@@ -44,15 +44,19 @@ class result : public test
     float total;
 
   public:
-    void display(void);
+    void display(result i){
+        cout<<i;
+    }
 };
-void result::display()
-{
-    total = s1 + s2;
+//void result::display(result i)
+//{
+    //total = i.s1 + i.s2;
    // put_num();
-    put_mark();
-    cout << "Total: " << total << "\n";
-}
+    // put_mark();
+    // cout << "Total: " << total << "\n";
+  //  cout<<i;
+
+//}
 const int m = 10;
 int main()
 {
@@ -64,7 +68,8 @@ int main()
         //student[i].get_num();
         student[i].get_mark();
         //student[i].put_mark();
-        student[i].display();
+        //display(student[i]);
+        cout<<student[i].s1;
     }
     return 0;
 }
