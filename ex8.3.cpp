@@ -1,31 +1,21 @@
 #include <iostream>
+#include <string.h>
 using namespace std;
 const int m = 30;
+
 class staff
 {
   protected:
     int code;
     char name[m];
-    // int temp;
-  public:
-    // void get_code(){
 
-    // }
+  public:
     void get_details()
     {
-        // cout << "Select your code: \n";
-        // cout << "1.Teacher. \n";
-        // cout << "2.Typist. \n";
-        // cout << "3.Officer. \n";
-        // cin >> code;
         cout << "Enter your name: ";
         cin >> name;
     }
-    void put_details(int a)
-    {
-        cout << "Your code is:" << a << "\n";
-        cout << "Your name is:" << name << "\n";
-    }
+    
 };
 class teacher : public staff
 {
@@ -40,10 +30,9 @@ class teacher : public staff
         cout << "Enter publication name: ";
         cin >> publication;
     }
-    void put_sub()
-    {
-        cout << "Your subject name is:" << subject << "\n";
-        cout << "Publication name is: " << publication << "\n";
+    void put_details(teacher s1){
+        cout<<"Name: "<<s1.subject<<"\n";
+        cout<<"Publication:"<<s1.publication<<"\n";
     }
 };
 class typist : public staff
@@ -100,67 +89,97 @@ class casual : public typist
         cout << "Your wages are: ";
     }
 };
+
+const int n = 3;
+int i = 0;
 int main()
 {
-    int code;
-    cout << "Select your code: \n";
-    cout << "1.Teacher. \n";
-    cout << "2.Typist. \n";
-    cout << "3.Officer. \n";
-    cin >> code;
-    // staff person1;
-    // person1.get_details();
-    // person1.put_details();
-    switch (code)
-    {
-    case 1:
-    {
-        teacher person2;
-        person2.get_details();
-        person2.put_details(code);
-        person2.get_sub();
-        person2.put_sub();
-        break;
-    }
-    case 2:
-    {
-        int typ;
-        cout << "Select the category: \n";
-        cout << "1.Regular. \n";
-        cout << "2.Casual. \n";
-        cin >> typ;
+    teacher person2[n];
+    teacher temp;
 
-        if(typ == 1)
-        {
-            regular person3;
-            person3.get_details();
-            person3.put_details(code);
-            person3.get_speed();
-            person3.put_speed();
-            break;
-        }
-        else
-        {
-            casual person4;
-            person4.get_details();
-            person4.put_details(code);
-            person4.get_speed();
-            person4.put_speed();
-            break;
-        }
-        
-    }
-    case 3:
+    int x;
+
+    while (1)
     {
-        officer person4;
-        person4.get_details();
-        person4.put_details(code);
-        person4.get_grade();
-        person4.put_grade();
-        break;
-    }
-    default:
-        cout << "Choose appropriate number:";
-        break;
+        int code;
+
+        cout << "Select your code: \n";
+        cout << "1.Teacher. \n";
+        cout << "2.Typist. \n";
+        cout << "3.Officer. \n";
+        cout << "4.Exit. \n";
+        cout<< "5.Display. \n";
+
+        cin >> code;
+        switch (code)
+
+        {
+        case 1:
+        {
+            
+            person2[i].get_details();
+
+            person2[i].get_sub();
+            i++;
+
+            break;
+        }
+        case 2:
+        {
+            int typ;
+            cout << "Select the category: \n";
+            cout << "1.Regular. \n";
+            cout << "2.Casual. \n";
+            cin >> typ;
+
+            if (typ == 1)
+            {
+                regular person3[n];
+                for (int i = 0; i < n; i++)
+                {
+                    person3[i].get_details();
+                    person3[i].get_speed();
+                }
+            }
+            else
+            {
+                casual person4[n];
+                for (int i = 0; i < n; i++)
+                {
+                    person4[i].get_details();
+                    person4[i].get_speed();
+                }
+            }
+        }
+        case 3:
+        {
+            officer person5[n];
+            for (int i = 0; i < n; i++)
+            {
+                person5[i].get_details();
+                person5[i].get_grade();
+            }
+        }
+        case 4:
+        {
+            break;
+        }
+        case 5:{
+            int dis;
+            cout<<"1.Display teachers. \n";
+            cout<<"2.Display typist. \n";
+            cout<<"3.Display officer. \n";
+            cin>>dis;
+            switch(dis){
+                case 1:
+                for(int j=0;j<i;j++){
+                    temp.put_details(person2[j]);
+                }
+            }
+        }
+        default:
+            cout << "Choose appropriate number:";
+            break;
+        }
     }
 }
