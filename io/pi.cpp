@@ -11,7 +11,8 @@ int main()
     for (int i=1;i<=10;i++)
     {
         cout.precision(i+1);
-        cout<< pi <<"\n";
+        std::cout<<pi<< std::flush;
+        // cout<< pi <<"\n" ;
         sleep(1);
     }
 }
