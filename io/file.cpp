@@ -2,8 +2,8 @@
 #include<fstream>
 using namespace std;
 int main(){
-    fstream file;
-    file.open("new3.txt", ios :: out | ios :: trunc);
+    ofstream file;
+    file.open("new3.txt");
     if(!file.is_open()){
         cout<<"Error while opening file";
     }
